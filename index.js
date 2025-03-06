@@ -15,13 +15,6 @@ app.use(cors(corsOptions));
 require("dotenv").config();
 const dbConnect = require("./config/dbConnect");
 const userRoutes = require("./routes/userRoutes");
-
-const subjectRoutes = require("./routes/subjectRoutes");
-const classRoutes = require("./routes/classRoutes");
-const studentRoutes = require("./routes/studentRoutes");
-const teacherRoutes = require("./routes/teacherRoutes");
-const gradeRoutes = require("./routes/gradeRoutes");
-const subjectClassRoutes = require("./routes/subjectClassRoutes");
 const authRoutes = require("./routes/authRoutes");
 const panelistRoutes = require("./routes/panelistRoutes");
 const port = process.env.PORT;
@@ -34,23 +27,7 @@ app.listen(port, () => {
 //routes
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
-app.use("/api/subject", subjectRoutes);
-app.use("/api/class", classRoutes);
-app.use("/api/student", studentRoutes);
-app.use("/api/teacher", teacherRoutes);
-app.use("/api/grade", gradeRoutes);
-app.use("/api/subjectClass", subjectClassRoutes);
-
 app.use("/api/panelists", panelistRoutes);
-app.use(
-  "/img/students",
-  express.static(path.join(__dirname, "public", "img", "students"))
-);
-app.use(
-  "/img/panelists",
-  express.static(path.join(__dirname, "public", "img", "panelists"))
-);
-
 //Gestion des erreurs
 app.use(notFound);
 app.use(globalErrHandler);
